@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الغابة الزجاجية | The Glass Terrarium</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        forest: {
+                            950: '#040d07',
+                            900: '#081a0e',
+                            800: '#0f2d18',
+                            700: '#184526',
+                            600: '#236137',
+                            500: '#2e8049',
+                        },
+                        amber: {
+                            gold: '#f59e0b',
+                            glow: '#d97706'
+                        }
+                    },
+                    fontFamily: {
+                        cairo: ['Cairo', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #040d07;
+            color: #f1f5f9;
+        }
+        .glass-card {
+            background: rgba(15, 45, 24, 0.65);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glass-nav {
+            background: rgba(4, 13, 7, 0.85);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glow-effect {
+            box-shadow: 0 0 30px rgba(46, 128, 73, 0.35);
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #040d07;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #184526;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-forest-950 text-gray-100 flex flex-col min-h-screen selection:bg-forest-500 selection:text-white">
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-40 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-forest-600 to-amber-gold flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform">
+                    <i class="fa-solid fa-jar text-xl text-forest-950"></i>
+                </div>
+                <div>
+                    <span class="text-xl font-extrabold tracking-wide text-white block">الغابة الزجاجية</span>
+                    <span class="text-xs text-amber-gold font-medium block">The Glass Terrarium</span>
+                </div>
+            </a>
+
+            <!-- Nav Links -->
+            <nav class="hidden md:flex items-center gap-8 font-semibold text-sm">
+                <a href="#hero" class="hover:text-amber-gold transition-colors">الرئيسية</a>
+                <a href="#products" class="hover:text-amber-gold transition-colors">المتجر</a>
+                <a href="#about" class="hover:text-amber-gold transition-colors">عن التيراريوم</a>
+                <a href="#guide" class="hover:text-amber-gold transition-colors">دليل العناية</a>
+            </nav>
+
+            <!-- Shopping Cart Button -->
+            <div class="flex items-center gap-4">
+                <button id="open-cart-btn" class="relative bg-forest-800/80 hover:bg-forest-700 border border-forest-600/40 text-white px-4 py-2.5 rounded-xl transition-all flex items-center gap-3 cursor-pointer">
+                    <i class="fa-solid fa-basket-shopping text-amber-gold text-lg"></i>
+                    <span class="hidden sm:inline font-bold text-sm">السلة</span>
+                    <span id="cart-badge" class="bg-amber-gold text-forest-950 font-black text-xs px-2 py-0.5 rounded-full">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow">
+        
+        <!-- Hero Section -->
+        <section id="hero" class="relative py-16 lg:py-24 overflow-hidden">
+            <div class="absolute -top-32 -right-32 w-96 h-96 bg-forest-600/20 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -bottom-32 -left-32 w-96 h-96 bg-amber-gold/10 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    
+                    <div class="space-y-6 text-center lg:text-right">
+                        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card text-amber-gold text-sm font-bold">
+                            <i class="fa-solid fa-leaf"></i>
+                            <span>عالم طبيعي مصغر ومستدام</span>
+                        </div>
+                        
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight text-white">
+                            غابتك الخاصة <br/>
+                            <span class="text-transparent bg-clip-text bg-gradient-to-l from-amber-gold via-emerald-400 to-forest-500">
+                                داخل وعاء زجاجي فاخر
+                            </span>
+                        </h1>
+
+                        <p class="text-gray-300 text-base sm:text-lg leading-relaxed max-w-xl mx-auto lg:mx-0">
+                            احصل على بيئتك الطبيعية الحية والمصممة بحب ودقة. تيراريوم زجاجي متكامل يحتوي على نباتات الفيتونيا الملونة، الطحالب الحية، وكائنات النظافة الحيوية.
+                        </p>
+
+                        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                            <button onclick="scrollToSection('products')" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-forest-600 to-forest-500 hover:from-forest-500 hover:to-forest-400 text-white font-bold rounded-xl shadow-lg glow-effect transition-all text-center flex items-center justify-center gap-3 cursor-pointer">
+                                <i class="fa-solid fa-store"></i>
+                                <span>اختر حجمك المناسب</span>
+                            </button>
+                            <button onclick="scrollToSection('guide')" class="w-full sm:w-auto px-8 py-4 glass-card hover:bg-forest-800 text-gray-200 font-semibold rounded-xl border border-white/10 transition-all text-center flex items-center justify-center gap-2 cursor-pointer">
+                                <i class="fa-solid fa-circle-info text-amber-gold"></i>
+                                <span>كيف تعتني به؟</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Visual Hero Display with Fittonia & Live Moss Banner -->
+                    <div class="relative flex justify-center">
+                        <div class="relative w-full max-w-md aspect-[4/5] rounded-3xl glass-card p-3 glow-effect border border-forest-500/30 overflow-hidden group">
+                            
+                            <!-- High quality visual presentation of Fittonia & Moss -->
+                            <div class="w-full h-full rounded-2xl bg-gradient-to-b from-emerald-950 via-forest-900 to-stone-900 flex flex-col items-center justify-center overflow-hidden relative p-4 text-center">
+                                <div class="absolute inset-0 opacity-40 mix-blend-overlay bg-[radial-gradient(#2e8049_1px,transparent_1px)] [background-size:16px_16px]"></div>
+                                
+                                <div class="relative z-10 space-y-4">
+                                    <div class="w-24 h-24 mx-auto rounded-full bg-forest-800/80 border-2 border-amber-gold/60 flex items-center justify-center text-4xl text-emerald-400 shadow-xl group-hover:scale-110 transition-transform">
+                                        <i class="fa-solid fa-seedling"></i>
+                                    </div>
+                                    <div class="space-y-1">
+                                        <span class="text-xs font-bold text-amber-gold tracking-widest uppercase">تيراريوم حي طبيعي</span>
+                                        <h3 class="text-2xl font-black text-white">نباتات الفيتونيا الملونة والطحالب الحية</h3>
+                                    </div>
+                                    <div class="flex items-center justify-center gap-3 text-xs text-emerald-200 pt-2">
+                                        <span class="bg-forest-950/80 px-3 py-1.5 rounded-lg border border-forest-700/50"><i class="fa-solid fa-check text-amber-gold ml-1"></i> طحالب حية 100%</span>
+                                        <span class="bg-forest-950/80 px-3 py-1.5 rounded-lg border border-forest-700/50"><i class="fa-solid fa-check text-amber-gold ml-1"></i> فيتونيا متناسقة</span>
+                                    </div>
+                                </div>
+
+                                <!-- Glass shine line -->
+                                <div class="absolute -left-12 top-0 w-24 h-full bg-white/10 rotate-12 blur-sm group-hover:translate-x-96 transition-transform duration-1000"></div>
+                            </div>
+
+                            <div class="absolute bottom-6 right-6 left-6 glass-card p-4 rounded-xl border border-white/10 flex items-center justify-between z-20">
+                                <div>
+                                    <h4 class="text-sm font-bold text-white">نباتات فيتونيا وطحالب حية</h4>
+                                    <p class="text-xs text-amber-gold">صناعة يدوية بعناية فائقة</p>
+                                </div>
+                                <i class="fa-solid fa-sparkles text-amber-gold text-lg"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Products Section -->
+        <section id="products" class="py-16 bg-forest-900/40 border-y border-forest-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-2xl mx-auto mb-12">
+                    <span class="text-amber-gold font-bold text-sm">منتجاتنا المتوفرة حالياً</span>
+                    <h2 class="text-3xl sm:text-4xl font-black text-white mt-1">اختر التيراريوم المناسب لك</h2>
+                    <p class="text-gray-400 text-sm mt-2">نظام بيئي حي ومستدام جاهز للتسليم الفوري مع كامل المكونات الحيوية</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                    
+                    <!-- Product 1: Medium (Cylinder) -->
+                    <div class="glass-card rounded-3xl overflow-hidden border border-forest-500/30 hover:border-amber-gold/50 transition-all duration-300 flex flex-col justify-between group">
+                        <div>
+                            <div class="relative h-80 overflow-hidden bg-gradient-to-b from-stone-900 via-forest-950 to-stone-900 flex items-center justify-center p-4">
+                                <svg class="h-full w-auto transition-transform duration-500 group-hover:scale-105 drop-shadow-2xl" viewBox="0 0 300 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="85" y="25" width="130" height="22" rx="4" fill="#d97706"/>
+                                    <rect x="90" y="47" width="120" height="8" fill="#b45309"/>
+                                    <rect x="95" y="55" width="110" height="290" rx="10" stroke="#6ee7b7" stroke-width="3" fill="url(#cylGlass)" opacity="0.85"/>
+                                    <path d="M97 300 Q150 315 203 300 V340 H97 Z" fill="#292524"/>
+                                    <path d="M97 270 Q150 285 203 270 V300 H97 Z" fill="#44403c"/>
+                                    <path d="M97 250 Q150 260 203 250 V270 H97 Z" fill="#15803d" opacity="0.6"/>
+                                    <path d="M97 100 Q130 90 140 250 H97 Z" fill="#166534"/>
+                                    <path d="M150 230 C130 200 135 160 165 160 C180 180 170 210 150 230 Z" fill="#be185d"/>
+                                    <path d="M150 230 Q155 195 165 160" stroke="#fbcfe8" stroke-width="2"/>
+                                    <path d="M142 185 L158 195 M148 210 L160 218" stroke="#fbcfe8" stroke-width="1.5"/>
+                                    <path d="M145 240 C170 220 190 180 170 150 C145 170 135 210 145 240 Z" fill="#15803d"/>
+                                    <path d="M145 240 Q160 195 170 150" stroke="#bbf7d0" stroke-width="2"/>
+                                    <path d="M130 245 C110 230 115 190 135 190 C145 205 140 230 130 245 Z" fill="#047857"/>
+                                    <line x1="107" y1="70" x2="107" y2="330" stroke="#ffffff" stroke-width="4" opacity="0.3" stroke-linecap="round"/>
+                                    <line x1="115" y1="90" x2="115" y2="310" stroke="#ffffff" stroke-width="1.5" opacity="0.2" stroke-linecap="round"/>
+                                    <defs>
+                                        <linearGradient id="cylGlass" x1="95" y1="55" x2="205" y2="345" gradientUnits="userSpaceOnUse">
+                                            <stop stop-color="#064e3b" stop-opacity="0.3"/>
+                                            <stop offset="0.5" stop-color="#022c22" stop-opacity="0.1"/>
+                                            <stop offset="1" stop-color="#064e3b" stop-opacity="0.4"/>
+                                        </linearGradient>
+                                    </defs>
+                                </svg>
+
+                                <div class="absolute top-4 right-4 flex flex-col gap-2 items-end">
+                                    <span class="bg-forest-950/80 backdrop-blur-md border border-white/10 text-amber-gold text-xs font-bold px-3 py-1 rounded-full">
+                                        حجم أسطواني أنيق
+                                    </span>
+                                    <span class="bg-amber-gold text-forest-950 text-xs font-extrabold px-3 py-1 rounded-full shadow-lg animate-pulse">
+                                        <i class="fa-solid fa-fire text-red-600 ml-1"></i> متوفر قطعة واحدة فقط!
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="p-6">
+                                <h3 class="text-2xl font-bold text-white mb-2">غابة زجاجية - حجم متوسط</h3>
+                                <p class="text-gray-300 text-sm leading-relaxed mb-4">
+                                    تيراريوم أسطواني زجاجي مغلق بلمسة خشبية طبيعية راقية. يحتوي على جدار من الطحالب الحية الخضراء، نبات الفيتونيا الوردي والأخضر الملون، وطبقات التربة الحيوية المجهزة.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="p-6 pt-0 flex items-center justify-between border-t border-forest-800/60 mt-auto">
+                            <div>
+                                <span class="text-xs text-gray-400 block">السعر</span>
+                                <span class="text-2xl font-black text-amber-gold">15.00 <span class="text-sm font-normal">ر.ع</span></span>
+                            </div>
+                            <button onclick="addToCart(1)" class="px-6 py-3 bg-forest-600 hover:bg-forest-500 text-white rounded-xl font-bold text-sm transition-all flex items-center gap-2 shadow-lg cursor-pointer active:scale-95">
+                                <i class="fa-solid fa-cart-plus"></i>
+                                <span>إضافة للسلة</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Product 2: Large (Spherical) -->
+                    <div class="glass-card rounded-3xl overflow-hidden border border-forest-500/30 hover:border-amber-gold/50 transition-all duration-300 flex flex-col justify-between group">
+                        <div>
+                            <div class="relative h-80 overflow-hidden bg-gradient-to-b from-stone-950 via-forest-950 to-stone-900 flex items-center justify-center p-4">
+                                <svg class="h-full w-auto transition-transform duration-500 group-hover:scale-105 drop-shadow-2xl" viewBox="0 0 400 350" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="200" cy="180" r="140" stroke="#a7f3d0" stroke-width="3.5" fill="url(#sphereGlass)" opacity="0.85"/>
+                                    <ellipse cx="200" cy="45" rx="70" ry="14" stroke="#6ee7b7" stroke-width="3" fill="#040d07" opacity="0.9"/>
+                                    <path d="M70 230 C120 280 280 280 330 230 C340 280 280 315 200 315 C120 315 60 280 70 230 Z" fill="#292524"/>
+                                    <path d="M120 140 L160 130 L180 220 L110 210 Z" fill="#57534e"/>
+                                    <rect x="180" y="170" width="30" height="8" rx="2" fill="#78716c"/>
+                                    <rect x="185" y="182" width="32" height="8" rx="2" fill="#78716c"/>
+                                    <rect x="190" y="194" width="34" height="8" rx="2" fill="#78716c"/>
+                                    <rect x="195" y="206" width="36" height="8" rx="2" fill="#78716c"/>
+                                    <path d="M200 215 Q220 235 240 260 Q210 265 170 250 Q185 235 200 215 Z" fill="#f5f5f4"/>
+                                    <circle cx="205" cy="225" r="3" fill="#d6d3d1"/>
+                                    <circle cx="220" cy="240" r="4" fill="#d6d3d1"/>
+                                    <circle cx="190" cy="245" r="3.5" fill="#e7e5e4"/>
+                                    <path d="M140 130 C120 90 160 70 180 100 C190 120 160 140 140 130 Z" fill="#be185d"/>
+                                    <path d="M140 130 Q160 100 180 100" stroke="#fbcfe8" stroke-width="1.5"/>
+                                    <path d="M100 210 C70 180 110 160 130 180 Z" fill="#15803d"/>
+                                    <path d="M250 210 C290 180 280 220 250 230 Z" fill="#166534"/>
+                                    <path d="M220 150 C260 120 270 160 230 170 Z" fill="#22c55e"/>
+                                    <path d="M140 240 Q180 260 220 240 Q250 270 200 270 Q130 270 140 240 Z" fill="#15803d"/>
+                                    <path d="M85 120 A 120 120 0 0 1 140 70" stroke="#ffffff" stroke-width="4" stroke-linecap="round" opacity="0.3"/>
+                                    <path d="M75 160 A 130 130 0 0 0 110 240" stroke="#ffffff" stroke-width="2" stroke-linecap="round" opacity="0.2"/>
+                                    <defs>
+                                        <radialGradient id="sphereGlass" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(200 180) rotate(90) scale(140)">
+                                            <stop stop-color="#047857" stop-opacity="0.25"/>
+                                            <stop offset="0.7" stop-color="#022c22" stop-opacity="0.05"/>
+                                            <stop offset="1" stop-color="#10b981" stop-opacity="0.35"/>
+                                        </radialGradient>
+                                    </defs>
+                                </svg>
+
+                                <div class="absolute top-4 right-4 flex flex-col gap-2 items-end">
+                                    <span class="bg-forest-950/80 backdrop-blur-md border border-white/10 text-amber-gold text-xs font-bold px-3 py-1 rounded-full">
+                                        تصميم كروي كبير وفاخر
+                                    </span>
+                                    <span class="bg-amber-gold text-forest-950 text-xs font-extrabold px-3 py-1 rounded-full shadow-lg animate-pulse">
+                                        <i class="fa-solid fa-fire text-red-600 ml-1"></i> متوفر قطعة واحدة فقط!
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="p-6">
+                                <h3 class="text-2xl font-bold text-white mb-2">غابة زجاجية - حجم كبير</h3>
+                                <p class="text-gray-300 text-sm leading-relaxed mb-4">
+                                    تيراريوم واسع وعميق داخل حوض كروي زجاجي فاخر. مصمم بتنسيق احترافي رائع يحتوي على درج ومسارات صخرية، أحجار بيضاء ناصعة، وتشكيلة غنية جداً من نباتات الفيتونيا الملونة والطحالب الحية.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="p-6 pt-0 flex items-center justify-between border-t border-forest-800/60 mt-auto">
+                            <div>
+                                <span class="text-xs text-gray-400 block">السعر</span>
+                                <span class="text-2xl font-black text-amber-gold">29.00 <span class="text-sm font-normal">ر.ع</span></span>
+                            </div>
+                            <button onclick="addToCart(2)" class="px-6 py-3 bg-forest-600 hover:bg-forest-500 text-white rounded-xl font-bold text-sm transition-all flex items-center gap-2 shadow-lg cursor-pointer active:scale-95">
+                                <i class="fa-solid fa-cart-plus"></i>
+                                <span>إضافة للسلة</span>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Ecosystem Section -->
+        <section id="about" class="py-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <span class="text-amber-gold font-bold text-sm">سر الطبيعة المغلقة</span>
+                    <h2 class="text-3xl font-extrabold text-white mt-1">كيف يعمل التيراريوم الحي؟</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="glass-card p-6 rounded-2xl">
+                        <div class="w-12 h-12 rounded-xl bg-forest-700/60 flex items-center justify-center text-amber-gold text-xl mb-4">
+                            <i class="fa-solid fa-cloud-rain"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-white mb-2">دورة ماء ذاتية</h4>
+                        <p class="text-gray-400 text-xs leading-relaxed">
+                            تمتص الجذور المياه، وتطلق الأوراق بخار الماء ليتكثف على الجدران الزجاجية ويعود للتربة من جديد تماماً كدورة المطر في الطبيعة.
+                        </p>
+                    </div>
+
+                    <div class="glass-card p-6 rounded-2xl">
+                        <div class="w-12 h-12 rounded-xl bg-forest-700/60 flex items-center justify-center text-emerald-400 text-xl mb-4">
+                            <i class="fa-solid fa-bug"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-white mb-2">كائنات النظافة الحيوية</h4>
+                        <p class="text-gray-400 text-xs leading-relaxed">
+                            نضيف كائنات دقيقة نافعة (مثل الربيعيات والأيزوبود) لتنظيف الفطريات والأوراق الميتة والحفاظ على نقاء التربة بشكل حيوي.
+                        </p>
+                    </div>
+
+                    <div class="glass-card p-6 rounded-2xl">
+                        <div class="w-12 h-12 rounded-xl bg-forest-700/60 flex items-center justify-center text-amber-gold text-xl mb-4">
+                            <i class="fa-solid fa-seedling"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-white mb-2">نباتات الفيتونيا والطحالب</h4>
+                        <p class="text-gray-400 text-xs leading-relaxed">
+                            نباتات الفيتونيا تتميز بألوان أوراقها الزاهية وتحملها التام للرطوبة العالية داخل الأواني الزجاجية المغلقة.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Care Guide -->
+        <section id="guide" class="py-16 bg-forest-900/30 border-t border-forest-800">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="glass-card p-8 rounded-3xl border border-forest-500/30">
+                    <h3 class="text-2xl font-bold text-white mb-6 border-b border-forest-800 pb-4 flex items-center gap-3">
+                        <i class="fa-solid fa-hand-holding-heart text-amber-gold"></i>
+                        دليل العناية السريع بالتيراريوم
+                    </h3>
+                    
+                    <div class="space-y-4 text-sm">
+                        <div class="flex items-start gap-4 p-3.5 rounded-xl bg-forest-950/60">
+                            <i class="fa-solid fa-sun text-amber-gold text-xl mt-1"></i>
+                            <div>
+                                <strong class="text-white block mb-0.5">الإضاءة:</strong>
+                                <span class="text-gray-300 text-xs">يحتاج ضوء غرفة ممتاز أو ضوء نهار غير مباشر. تجنب وضع التيراريوم تحت أشعة الشمس المباشرة تماماً.</span>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4 p-3.5 rounded-xl bg-forest-950/60">
+                            <i class="fa-solid fa-droplet text-blue-400 text-xl mt-1"></i>
+                            <div>
+                                <strong class="text-white block mb-0.5">الري والتهوية:</strong>
+                                <span class="text-gray-300 text-xs">لا يحتاج للري إلا نادراً جداً (مرة كل عدة أشهر). إذا تكثف الماء بشكل كامل وأحجب الرؤية، افتح الغطاء لمدّة ساعة لتهويته.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Slide-Over Shopping Cart Drawer -->
+    <div id="cart-drawer" class="fixed inset-0 z-50 overflow-hidden hidden">
+        <div id="cart-backdrop" class="absolute inset-0 bg-black/80 backdrop-blur-sm transition-opacity"></div>
+
+        <div class="fixed inset-y-0 left-0 max-w-full flex pl-0 sm:pl-6">
+            <div class="w-screen max-w-md glass-card bg-forest-950 border-r border-forest-700 pointer-events-auto flex flex-col justify-between shadow-2xl">
+                
+                <div class="p-6 border-b border-forest-800 flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-basket-shopping text-amber-gold text-xl"></i>
+                        <h3 class="text-xl font-bold text-white">سلة الشراء</h3>
+                    </div>
+                    <button id="close-cart-btn" class="text-gray-400 hover:text-white p-2 text-xl cursor-pointer">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+
+                <div id="cart-items" class="flex-1 overflow-y-auto p-6 space-y-4">
+                    <!-- Dynamic Cart Content -->
+                </div>
+
+                <div class="p-6 border-t border-forest-800 space-y-4 bg-forest-950">
+                    <div class="flex justify-between items-center text-lg font-bold">
+                        <span class="text-gray-300">الإجمالي:</span>
+                        <span id="cart-total" class="text-amber-gold text-2xl font-black">0.00 ر.ع</span>
+                    </div>
+
+                    <button id="whatsapp-btn" onclick="checkoutWhatsApp()" class="w-full py-4 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl shadow-lg transition-all flex items-center justify-center gap-3 text-base cursor-pointer">
+                        <i class="fa-brands fa-whatsapp text-2xl"></i>
+                        <span>إتمام الطلب عبر الواتساب</span>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="fixed bottom-6 left-6 z-50 bg-amber-gold text-forest-950 font-bold px-6 py-3 rounded-xl shadow-2xl transition-all duration-300 hidden flex items-center gap-3">
+        <i class="fa-solid fa-circle-check text-lg"></i>
+        <span id="toast-msg">تمت إضافة المنتج إلى السلة</span>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-forest-950 border-t border-forest-800 py-8 text-xs text-gray-500 text-center">
+        <div class="max-w-7xl mx-auto px-4">
+            <p>جميع الحقوق محفوظة © <span id="year"></span> - الغابة الزجاجية (The Glass Terrarium)</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        const productsList = [
+            { 
+                id: 1, 
+                name: "غابة زجاجية - حجم متوسط", 
+                price: 15.00
+            },
+            { 
+                id: 2, 
+                name: "غابة زجاجية - حجم كبير", 
+                price: 29.00
+            }
+        ];
+
+        let cart = JSON.parse(localStorage.getItem('glass_terrarium_cart')) || [];
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('year').textContent = new Date().getFullYear();
+            
+            document.getElementById('open-cart-btn').addEventListener('click', openCart);
+            document.getElementById('close-cart-btn').addEventListener('click', closeCart);
+            document.getElementById('cart-backdrop').addEventListener('click', closeCart);
+
+            updateCartUI();
+        });
+
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function addToCart(id) {
+            const product = productsList.find(p => p.id === id);
+            const itemInCart = cart.find(item => item.id === id);
+
+            if (itemInCart) {
+                itemInCart.quantity += 1;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+
+            saveCart();
+            updateCartUI();
+            showToast(`تمت إضافة "${product.name}" إلى السلة`);
+            openCart();
+        }
+
+        function updateQuantity(id, delta) {
+            const item = cart.find(p => p.id === id);
+            if (item) {
+                item.quantity += delta;
+                if (item.quantity <= 0) {
+                    cart = cart.filter(p => p.id !== id);
+                }
+            }
+            saveCart();
+            updateCartUI();
+        }
+
+        function saveCart() {
+            localStorage.setItem('glass_terrarium_cart', JSON.stringify(cart));
+        }
+
+        function updateCartUI() {
+            const cartItemsContainer = document.getElementById('cart-items');
+            const cartBadge = document.getElementById('cart-badge');
+            const cartTotal = document.getElementById('cart-total');
+
+            const totalItemsCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartBadge.textContent = totalItemsCount;
+
+            cartItemsContainer.innerHTML = '';
+
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = `
+                    <div class="text-center py-16 text-gray-500">
+                        <i class="fa-solid fa-basket-shopping text-5xl mb-3 opacity-30"></i>
+                        <p class="text-sm font-semibold">سلة التسوق فارغة حالياً</p>
+                    </div>
+                `;
+            } else {
+                cart.forEach(item => {
+                    const el = document.createElement('div');
+                    el.className = "flex items-center gap-3 p-3.5 rounded-xl bg-forest-900/60 border border-forest-800";
+                    el.innerHTML = `
+                        <div class="w-12 h-12 rounded-lg bg-forest-950 border border-forest-700 flex items-center justify-center text-amber-gold">
+                            <i class="fa-solid ${item.id === 1 ? 'fa-vial' : 'fa-circle-dot'} text-xl"></i>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="text-xs font-bold text-white">${item.name}</h4>
+                            <span class="text-xs text-amber-gold font-bold">${(item.price * item.quantity).toFixed(2)} ر.ع</span>
+                        </div>
+                        <div class="flex items-center gap-2 bg-forest-950 px-2 py-1 rounded-lg border border-forest-800">
+                            <button onclick="updateQuantity(${item.id}, -1)" class="text-gray-400 hover:text-white text-xs px-1 font-bold cursor-pointer">-</button>
+                            <span class="text-xs font-bold text-white px-1">${item.quantity}</span>
+                            <button onclick="updateQuantity(${item.id}, 1)" class="text-gray-400 hover:text-white text-xs px-1 font-bold cursor-pointer">+</button>
+                        </div>
+                    `;
+                    cartItemsContainer.appendChild(el);
+                });
+            }
+
+            const grandTotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            cartTotal.textContent = grandTotal.toFixed(2) + ' ر.ع';
+        }
+
+        function openCart() {
+            document.getElementById('cart-drawer').classList.remove('hidden');
+        }
+
+        function closeCart() {
+            document.getElementById('cart-drawer').classList.add('hidden');
+        }
+
+        function checkoutWhatsApp() {
+            if (cart.length === 0) {
+                showToast("السلة فارغة! يرجى إضافة منتج أولاً.");
+                return;
+            }
+
+            let text = "السلام عليكم، أود طلب التيراريوم التالي من متجر *الغابة الزجاجية*:\n\n";
+            cart.forEach((item, index) => {
+                text += `${index + 1}. *${item.name}*\n  • العدد: ${item.quantity}\n  • السعر: ${(item.price * item.quantity).toFixed(2)} ر.ع\n\n`;
+            });
+
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            text += `*المبلغ الإجمالي:* ${total.toFixed(2)} ر.ع\n\nيرجى تزويدي بالتفاصيل لإكمال الطلب والتوصيل. شكرًا لك!`;
+
+            // الرقم المباشر (سلطنة عمان: +968 78410753)
+            const phoneNumber = "96878410753"; 
+            const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(text)}`;
+            
+            // فتح الرابط بشكل مباشر ومباشرة فتح التطبيق
+            window.location.href = whatsappUrl;
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toast-msg');
+            toastMsg.textContent = message;
+
+            toast.classList.remove('hidden');
+
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
